@@ -6,11 +6,7 @@ import com.kkoneone.core.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @Author : huangzhengyi.hzy@alibaba-inc.com
- * @Date : 2024/7/16 20:22
- * @Description:
- **/
+
 //@Aop(jointPath = "com.kkoneone.aop.*")
 @Aop(jointAnnotationClass = Plus.class)
 @Configurable
