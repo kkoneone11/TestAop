@@ -12,20 +12,12 @@ import org.springframework.context.annotation.Configuration;
 @Configurable
 public class TestAop {
 
-//    @Around
-//    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-//        System.out.println("环绕通知前置拦截器");
-//        final Object ret = joinPoint.invoke();
-//        System.out.println("环绕通知后置拦截器");
-//        //对应切点的方法
-//        return ret;
-//
-//    }
-
     @Before
     public void before(JoinPoint joinPoint){
         Plus plus = joinPoint.getAnnotation(Plus.class);
-        System.out.println(plus.value());
+        if(plus != null) {
+            System.out.println(plus.value());
+        }
         System.out.println("before");
     }
 
@@ -33,11 +25,21 @@ public class TestAop {
 //    public void throwing(){
 //        System.out.println("出异常了.....");
 //    }
-//    @After
-//    public void after(JoinPoint joinPoint){
-//        final Object returnValue = joinPoint.getArgs();
-//        System.out.println("after");
-//    }
+    @After
+    public void after(JoinPoint joinPoint){
+        final Object returnValue = joinPoint.getArgs();
+        System.out.println("after");
+    }
+
+    @Around
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("环绕通知前置拦截器");
+//        final Object ret = joinPoint.invoke();
+        System.out.println("环绕通知后置拦截器");
+        //对应切点的方法
+        return null;
+
+    }
 
 
 }
